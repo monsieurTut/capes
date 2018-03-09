@@ -30,4 +30,14 @@ def orient (tab, i, j, k):
     else:
         return 0
         
-                
+def prochain_point(tab,i):
+    maximum = 0
+    tindice = [x for x in range(len(tab[0]))]
+    del tindice[i]
+    for j in tindice[1:]:
+        if orient(tab, i, j, maximum) > 0:
+            maximum = j
+    return maximum
+    
+    
+    

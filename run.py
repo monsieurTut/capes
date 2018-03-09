@@ -10,4 +10,5 @@ print(plus_bas(tab))
 print (orient(tab,0,3,4))
 print (orient(tab,8,9,10))
 print (orient(tab,8,9,9))
+print (prochain_point(tab, 11))
 
