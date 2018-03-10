@@ -3,7 +3,7 @@ from matplotlib.pyplot import *
 def dessiner_points(tab):
     plot(tab[0], tab[1], 'ko')
         
-def dessiner_Enveloppe(tab):
+def dessiner_enveloppe(tab):
     plot(tab[0] + [tab[0][0]], tab[1] + [tab[1][0]], 'k-')
 
 def plus_bas(tab):
@@ -32,12 +32,23 @@ def orient (tab, i, j, k):
         
 def prochain_point(tab,i):
     maximum = 0
+    if i == 0:
+        maximum = len(tab) - 1
     tindice = [x for x in range(len(tab[0]))]
     del tindice[i]
-    for j in tindice[1:]:
+    for j in tindice:
         if orient(tab, i, j, maximum) > 0:
             maximum = j
     return maximum
     
-    
+def compute_enveloppe(tab):
+    i = plus_bas(tab)
+    j = i
+    enveloppe = [i];
+    while True:
+        j = prochain_point(tab,j)
+        if j == i:
+            return enveloppe
+        enveloppe.append(j)
+        
     
