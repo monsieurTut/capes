@@ -33,3 +33,26 @@ def orient(tab, i, j, k):
         return -1
     else:
         return 0
+        
+def prochain_point(tab,i):
+    maximum = 0
+    if i == 0:
+        maximum = len(tab) - 1
+    tindice = [x for x in range(len(tab[0]))]
+    del tindice[i]
+    for j in tindice:
+        if orient(tab, i, j, maximum) > 0:
+            maximum = j
+    return maximum
+
+def compute_enveloppe(tab):
+    i = plus_bas(tab)
+    j = i
+    enveloppe = [i];
+    while True:
+        j = prochain_point(tab,j)
+        if j == i:
+            return enveloppe
+        enveloppe.append(j)
+
+
