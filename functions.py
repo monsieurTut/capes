@@ -33,8 +33,9 @@ def orient(tab, i, j, k):
         return -1
     else:
         return 0
-        
-def prochain_point(tab,i):
+
+
+def prochain_point(tab, i):
     maximum = 0
     if i == 0:
         maximum = len(tab) - 1
@@ -45,14 +46,28 @@ def prochain_point(tab,i):
             maximum = j
     return maximum
 
-def compute_enveloppe(tab):
+
+def conv_jarvis(tab):
     i = plus_bas(tab)
     j = i
-    enveloppe = [i];
+    enveloppe = [i]
     while True:
-        j = prochain_point(tab,j)
+        j = prochain_point(tab, j)
         if j == i:
             return enveloppe
         enveloppe.append(j)
+
+
+def maj_es(tab, es, i):
+    if len(es) < 2:
+        es.append(i)
+        return
+    while len(es) > 1:
+        j= es.pop()
+        if orient(tab,i,j,es[-1]) > 0:
+            es.append(j)
+            es.append(i)
+            return
+
 
 
